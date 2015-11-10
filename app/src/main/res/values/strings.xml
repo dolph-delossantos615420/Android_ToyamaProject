@@ -21,6 +21,7 @@
     <!-- MainActivity -->
     <string name="MenuBtn_Map">Display Map</string>
     <string name="MenuBtn_Ranking">Ranking</string>
+    <string name="MenuBtn_Setting">Setting</string>
 
     <!-- MapActivity -->
     <string name="title_activity_map_test">MapTestActivity</string>
@@ -51,5 +52,26 @@
     <string name="MenuBtn_LikeRanking">Like counts ranking</string>
     <string name="MenuBtn_CommentRanking">Comment counts ranking</string>
     <string name="MenuBtn_CreatetimeRanking">Create Time ranking</string>
+    <string name="title_activity_user_information_update">UserInformationUpdateActivity</string>
+    <string name="title_activity_user_email_update">UserEmailUpdateActivity</string>
+    <string name="title_activity_user_password_update">UserPasswordUpdateActivity</string>
+
+    <!-- UserInformationActivity -->
+    <string name="SettingBtn_EmailUpdate">Change E-Mail Address</string>
+    <string name="SettingBtn_PasswordUpdate">Change Password</string>
+
+    <!-- UserEmailUpdateActivity -->
+    <string name="SettingEmailLbl_title">You change the E-Mail Address.</string>
+    <string name="SettingEmailLbl_OldEmail">Current E-Mail Address</string>
+    <string name="SettingEmailLbl_NewEmail">New E-Mail Address</string>
+    <string name="SettingEmailLbl_NowPassword">Current Password</string>
+    <string name="SettingEmailBtn_EmailUpdate">Update</string>
+
+    <!-- UserPasswordUpdateActivity -->
+    <string name="SettingPasswordLbl_title">You change the Password.</string>
+    <string name="SettingPasswordLbl_NowEmail">Current E-Mail Address</string>
+    <string name="SettingPasswordLbl_OldPassword">Current Password</string>
+    <string name="SettingPasswordLbl_NewPassword">New Password</string>
+    <string name="SettingPasswordBtn_PasswordUpdate">Update</string>
 
 </resources>

@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity
 {
@@ -30,6 +31,15 @@ public class MainActivity extends AppCompatActivity
 			Intent intent = new Intent(this,UserRegistActivity.class);
 			startActivityForResult(intent, 111);
 		}
+
+		Button btnSetting = (Button)findViewById(R.id.btnSetting);
+		btnSetting.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(MainActivity.this, UserInformationUpdateActivity.class);
+				startActivity(intent);
+			}
+		});
 	}
 
 	@Override

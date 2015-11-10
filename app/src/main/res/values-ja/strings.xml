@@ -21,6 +21,7 @@
     <!-- MainActivity -->
     <string name="MenuBtn_Map">情報表示(地図)</string>
     <string name="MenuBtn_Ranking">各種ランキング</string>
+    <string name="MenuBtn_Setting">設定</string>
 
     <!-- MapActivity -->
     <string name="title_activity_map_test">MapTestActivity</string>
@@ -50,5 +51,25 @@
     <string name="MenuBtn_LikeRanking">いいね数ランキング</string>
     <string name="MenuBtn_CommentRanking">コメント数ランキング</string>
     <string name="MenuBtn_CreatetimeRanking">登録日時ランキング</string>
+
+    <!-- UserInformationActivity -->
+    <string name="SettingBtn_EmailUpdate">メールアドレスを変更する</string>
+    <string name="SettingBtn_PasswordUpdate">パスワードを変更する</string>
+
+    <!-- UserEmailUpdateActivity -->
+    <string name="SettingEmailLbl_title">メールアドレスを変更します</string>
+    <string name="SettingEmailLbl_OldEmail">現在のメールアドレス</string>
+    <string name="SettingEmailLbl_NewEmail">新しいメールアドレス</string>
+    <string name="SettingEmailLbl_NowPassword">パスワード</string>
+    <string name="SettingEmailBtn_EmailUpdate">更新</string>
+
+    <!-- UserPasswordUpdateActivity -->
+    <string name="SettingPasswordLbl_title">パスワードを変更します</string>
+    <string name="SettingPasswordLbl_NowEmail">メールアドレス</string>
+    <string name="SettingPasswordLbl_OldPassword">現在のパスワード</string>
+    <string name="SettingPasswordLbl_NewPassword">新しいパスワード</string>
+    <string name="SettingPasswordBtn_PasswordUpdate">更新</string>
+
+
 
 </resources>
