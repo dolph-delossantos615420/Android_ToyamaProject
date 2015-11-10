@@ -27,9 +27,11 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
+
+        <!-- TODO GoogleMapAPIを設定する -->
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
-            android:value="AIzaSyDS5NslXofa83-I3fhgiVrZaQ-L3WlMMYI" />
+            android:value="AIzaSyCjAg6WyuR1EXHrsg9ntXmQb_hH2H_I5KQ" />
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />

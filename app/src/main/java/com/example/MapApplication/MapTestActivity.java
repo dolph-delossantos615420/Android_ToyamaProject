@@ -60,19 +60,24 @@ public class MapTestActivity extends ActionBarActivity
 
         // Do a null check to confirm that we have not already instantiated the map.
         if (mMap == null) {
-        	while(true)
-        	{
-	            mMap = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map))
-	                    .getMap();
-	            if(mMap != null)
-	            {
+        	while(true) {
+	            mMap = ((SupportMapFragment)getSupportFragmentManager().findFragmentById(R.id.map)).getMap();
+	            if(mMap != null) {
+                    setUpMap();
+
+                    mMap.setOnMyLocationButtonClickListener(new GoogleMap.OnMyLocationButtonClickListener() {
+                        @Override
+                        public boolean onMyLocationButtonClick() {
+                            Toast.makeText(MapTestActivity.this, "LocationButton", Toast.LENGTH_LONG).show();
+                            moveLocation();
+                            return true;
+                        }
+                    });
+
 	            	break;
 	            }
         	}
-            // Check if we were successful in obtaining the map.
-            //if (mMap != null) {
-                setUpMap();
-            //}
+
             mPlaceInfoList = new ArrayList<PlaceInfo>();
         }
 
@@ -153,7 +158,11 @@ public class MapTestActivity extends ActionBarActivity
     	mMap.setMyLocationEnabled(true);
 
         // 現在地にカメラを移動する
-        mLocationClient = new GoogleApiClient.Builder(getApplicationContext()).addApi(LocationServices.API).addConnectionCallbacks(this).addOnConnectionFailedListener(this).build();
+        mLocationClient = new GoogleApiClient.Builder(getApplicationContext()).
+                addApi(LocationServices.API).
+                addConnectionCallbacks(this).
+                addOnConnectionFailedListener(this).
+                build();
         if(mLocationClient != null){
             mLocationClient.connect();
         }
@@ -166,6 +175,7 @@ public class MapTestActivity extends ActionBarActivity
 
     @Override
     public void onConnected(Bundle connectionHint) {
+        moveLocation();
         // TODO Auto-generated method stub
         LocationServices.FusedLocationApi.requestLocationUpdates(mLocationClient, REQUEST, this);
     }
@@ -259,5 +269,32 @@ public class MapTestActivity extends ActionBarActivity
             }
 		}
 	}
+
+    private void moveLocation() {
+        // 現在地を取得する
+        Location mLastLocation = LocationServices.FusedLocationApi.getLastLocation(mLocationClient);
+        LatLng mLatLng = null;      // 経緯と緯度をまとめた変数
+
+        if(mLastLocation != null) {
+            mLatLng = new LatLng(mLastLocation.getLatitude(), mLastLocation.getLongitude());
+        } else {
+            // 仮データ
+            double mLat = 34.0d + 46.0d / 60 + 41.0d / (60 * 60);
+            double mLon = 135.0d + 15.0d / 60 + 43.0d / (60 * 60);
+            mLatLng = new LatLng(mLat, mLon);
+        }
+
+        // 現在地に移動するための設定をする
+        CameraPosition cameraPosition = new CameraPosition.Builder()
+                .target(mLatLng)
+                .zoom(15.0f)
+                .bearing(0)
+                .build();
+
+        // 現在地に移動する
+        mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+
+
+    }
 }
 
