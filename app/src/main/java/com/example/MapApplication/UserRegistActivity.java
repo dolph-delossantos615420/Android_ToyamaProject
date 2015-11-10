@@ -79,8 +79,7 @@ public class UserRegistActivity extends ActionBarActivity {
 
             Intent intent = new Intent();
             setResult(RESULT_OK, intent);
-    		//TODO:string.xml化
-    		Toast toast = Toast.makeText(this, "ユーザ登録が完了しました", Toast.LENGTH_LONG);
+    		Toast toast = Toast.makeText(this, getString(R.string.ToastMessage_UserRegistration), Toast.LENGTH_LONG);
     		toast.show();
         }
         catch(JSONException e)

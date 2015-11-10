@@ -28,7 +28,6 @@ implements OnClickListener{
 			e.printStackTrace();
 		}
 
-		// TODO バージョン情報を表示する
 		return new AlertDialog.Builder(getActivity())
 		    .setTitle(R.string.action_version)
 		    .setMessage(message)

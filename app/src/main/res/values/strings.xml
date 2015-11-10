@@ -13,6 +13,8 @@
     <string name="URL_AddPlace">http://mail.tym-bit.com/php_b/AddPlace.php</string>
     <string name="URL_AddComment">http://mail.tym-bit.com/php_b/AddComment.php</string>
     <string name="URL_UserRegist">http://mail.tym-bit.com/php_b/UserRegistration.php</string>
+    <string name="URL_EmailUpdate">http://mail.tym-bit.com/php_b/UpdateEmail.php</string>
+    <string name="URL_PasswordUpdate">http://mail.tym-bit.com/php_b/UpdatePassword.php</string>
 
     <!-- Version -->
     <string name="action_version">About</string>
@@ -35,6 +37,7 @@
     <string name="Button_Registration">Registration</string>
     <string name="caption_mailaddress">Mail address</string>
     <string name="caption_password">Password</string>
+    <string name="ToastMessage_UserRegistration">User registration has been completed.</string>
 
     <!-- DisplayDetailActivity, AddPlaceActivity -->
     <string name="title_activity_add_place">AddPlaceActivity</string>
@@ -46,15 +49,11 @@
     <string name="caption_remark">Remarks</string>
     <string name="Button_AddPlace">Add</string>
     <string name="Button_AddComment">Comment</string>
-    <string name="title_activity_select_ranking">SelectRankingActivity</string>
 
     <!-- SelectRankingActivity -->
     <string name="MenuBtn_LikeRanking">Like counts ranking</string>
     <string name="MenuBtn_CommentRanking">Comment counts ranking</string>
     <string name="MenuBtn_CreatetimeRanking">Create Time ranking</string>
-    <string name="title_activity_user_information_update">UserInformationUpdateActivity</string>
-    <string name="title_activity_user_email_update">UserEmailUpdateActivity</string>
-    <string name="title_activity_user_password_update">UserPasswordUpdateActivity</string>
 
     <!-- UserInformationActivity -->
     <string name="SettingBtn_EmailUpdate">Change E-Mail Address</string>
@@ -74,4 +73,8 @@
     <string name="SettingPasswordLbl_NewPassword">New Password</string>
     <string name="SettingPasswordBtn_PasswordUpdate">Update</string>
 
+    <string name="title_activity_select_ranking">SelectRankingActivity</string>
+    <string name="title_activity_user_information_update">UserInformationUpdateActivity</string>
+    <string name="title_activity_user_email_update">UserEmailUpdateActivity</string>
+    <string name="title_activity_user_password_update">UserPasswordUpdateActivity</string>
 </resources>
