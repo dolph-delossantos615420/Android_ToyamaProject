@@ -68,7 +68,6 @@ public class MapTestActivity extends ActionBarActivity
                     mMap.setOnMyLocationButtonClickListener(new GoogleMap.OnMyLocationButtonClickListener() {
                         @Override
                         public boolean onMyLocationButtonClick() {
-                            Toast.makeText(MapTestActivity.this, "LocationButton", Toast.LENGTH_LONG).show();
                             moveLocation();
                             return true;
                         }
