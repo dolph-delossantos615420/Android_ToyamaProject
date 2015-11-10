@@ -15,15 +15,40 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class UpdateEmailTask extends AsyncTask<String, String, JSONObject> {
+/**
+ * Created by YM on 2015/11/10.
+ */
+public class AddTravelWordTask extends AsyncTask<String, String, JSONObject> {
 
     private Context mContext;
     private String mURL;
 
-    public UpdateEmailTask(Context mContext, String mURL) {
+    public AddTravelWordTask(Context mContext, String mURL) {
         super();
         this.mContext = mContext;
         this.mURL = mURL;
+    }
+
+    @Override
+    protected void onPreExecute() {
+        super.onPreExecute();
+    }
+
+    @Override
+    protected void onPostExecute(JSONObject jsonObject) {
+        try {
+            Boolean f = jsonObject.getBoolean("flag");
+            // TODO string.xmlから表示させる文字列を持ってくる
+            if(f){
+                Toast toast = Toast.makeText(mContext, "yes", Toast.LENGTH_LONG);
+                toast.show();
+            } else {
+                Toast toast = Toast.makeText(mContext, "no", Toast.LENGTH_LONG);
+                toast.show();
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -42,13 +67,16 @@ public class UpdateEmailTask extends AsyncTask<String, String, JSONObject> {
 
             // データ作成
             String postData = "";
-            postData += "nowPassword=" + params[0];
-            postData += "&" + "oldEmail=" + params[1];
-            postData += "&" + "newEmail=" + params[2];
+            postData += "CategoryID=" + params[0];
+            postData += "&" + "Comment=" + params[1];
 
             // データを送信する
             os = new DataOutputStream(connection.getOutputStream());
-            os.writeBytes(postData);
+            // 日本語に対応させるためにbyteに変換して一つずつ書き込んでいく
+            byte[] postBytes = postData.getBytes();
+            for(int i=0; i<postBytes.length; i++){
+                os.writeByte(postBytes[i]);
+            }
 
             // レスポンスを受信する
             int iResponseCode = connection.getResponseCode();
@@ -93,29 +121,6 @@ public class UpdateEmailTask extends AsyncTask<String, String, JSONObject> {
                 e.printStackTrace();
             }
         }
-
         return null;
-    }
-
-    @Override
-    protected void onPostExecute(JSONObject jsonObject) {
-        try {
-            Boolean f = jsonObject.getBoolean("flag");
-            // TODO string.xmlから表示させる文字列を持ってくる
-            if(f){
-                Toast toast = Toast.makeText(mContext, "yes", Toast.LENGTH_LONG);
-                toast.show();
-            } else {
-                Toast toast = Toast.makeText(mContext, "no", Toast.LENGTH_LONG);
-                toast.show();
-            }
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @Override
-    protected void onPreExecute() {
-        super.onPreExecute();
     }
 }

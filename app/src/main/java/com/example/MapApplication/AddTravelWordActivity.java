@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 public class AddTravelWordActivity extends Activity {
 
+    private AddTravelWordTask mAddTravelWordTask;
     private Spinner mSpinner;
     private EditText mEditText;
 
@@ -31,6 +32,8 @@ public class AddTravelWordActivity extends Activity {
 
                 for(int i=0; i<strArray.length; i++){ System.out.println(strArray[i]); }
 
+                mAddTravelWordTask = new AddTravelWordTask(AddTravelWordActivity.this, getString(R.string.URL_TravelWordAdd));
+                mAddTravelWordTask.execute(strArray);
             }
         });
     }
