@@ -33,12 +33,21 @@
         android:onClick="onClickBtnVersion"
         android:text="@string/MenuBtn_Version" />
 
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/MenuBtn_TravelDictionary"
+        android:id="@+id/btnTravelDictionary"
+        android:layout_below="@+id/btnRanking"
+        android:layout_centerHorizontal="true" />
+
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/MenuBtn_Setting"
         android:id="@+id/btnSetting"
-        android:layout_below="@+id/btnRanking"
+        android:layout_below="@+id/btnTravelDictionary"
         android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

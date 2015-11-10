@@ -80,6 +80,11 @@
             android:label="@string/title_activity_user_password_update"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
+        <activity
+            android:name=".AddTravelWordActivity"
+            android:label="@string/title_activity_add_travel_word"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
     </application>
 
 </manifest>
