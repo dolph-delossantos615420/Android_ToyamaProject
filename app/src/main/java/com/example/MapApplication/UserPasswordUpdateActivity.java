@@ -34,20 +34,17 @@ public class UserPasswordUpdateActivity extends AppCompatActivity {
         btnPasswordUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EditText edtEmail = (EditText)findViewById(R.id.edtEmail);
-                EditText edtOldPassword = (EditText)findViewById(R.id.edtOldPassword);
-                EditText edtNewPassword = (EditText)findViewById(R.id.edtNewPassword);
+            EditText edtEmail = (EditText)findViewById(R.id.edtEmail);
+            EditText edtOldPassword = (EditText)findViewById(R.id.edtOldPassword);
+            EditText edtNewPassword = (EditText)findViewById(R.id.edtNewPassword);
 
-                String[] strArray = new String[3];
-                strArray[0] = edtEmail.getText().toString();
-                strArray[1] = edtOldPassword.getText().toString();
-                strArray[2] = edtNewPassword.getText().toString();
+            String[] strArray = new String[3];
+            strArray[0] = edtEmail.getText().toString();
+            strArray[1] = edtOldPassword.getText().toString();
+            strArray[2] = edtNewPassword.getText().toString();
 
-                mUpdatePasswordTask = new UpdatePasswordTask(UserPasswordUpdateActivity.this, getString(R.string.URL_PasswordUpdate));
-                mUpdatePasswordTask.execute(strArray);
-
-                Toast toast = Toast.makeText(UserPasswordUpdateActivity.this, "PasswordUpdate", Toast.LENGTH_SHORT);
-                toast.show();
+            mUpdatePasswordTask = new UpdatePasswordTask(UserPasswordUpdateActivity.this, getString(R.string.URL_PasswordUpdate));
+            mUpdatePasswordTask.execute(strArray);
             }
         });
 

@@ -34,20 +34,17 @@ public class UserEmailUpdateActivity extends AppCompatActivity {
         btnEmailUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EditText edtPassword = (EditText)findViewById(R.id.edtPassword);
-                EditText edtOldEmail = (EditText)findViewById(R.id.edtOldEmail);
-                EditText edtNewEmail = (EditText)findViewById(R.id.edtNewEmail);
+            EditText edtPassword = (EditText)findViewById(R.id.edtPassword);
+            EditText edtOldEmail = (EditText)findViewById(R.id.edtOldEmail);
+            EditText edtNewEmail = (EditText)findViewById(R.id.edtNewEmail);
 
-                String[] strArray = new String[3];
-                strArray[0] = edtPassword.getText().toString();
-                strArray[1] = edtOldEmail.getText().toString();
-                strArray[2] = edtNewEmail.getText().toString();
+            String[] strArray = new String[3];
+            strArray[0] = edtPassword.getText().toString();
+            strArray[1] = edtOldEmail.getText().toString();
+            strArray[2] = edtNewEmail.getText().toString();
 
-                mUpdateEmailTask = new UpdateEmailTask(UserEmailUpdateActivity.this, getString(R.string.URL_EmailUpdate));
-                mUpdateEmailTask.execute(strArray);
-
-                Toast toast = Toast.makeText(UserEmailUpdateActivity.this, "EmailUpdate", Toast.LENGTH_SHORT);
-                toast.show();
+            mUpdateEmailTask = new UpdateEmailTask(UserEmailUpdateActivity.this, getString(R.string.URL_EmailUpdate));
+            mUpdateEmailTask.execute(strArray);
             }
         });
 
