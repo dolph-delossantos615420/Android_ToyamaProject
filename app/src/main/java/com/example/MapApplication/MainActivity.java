@@ -40,6 +40,16 @@ public class MainActivity extends AppCompatActivity
 				startActivity(intent);
 			}
 		});
+
+		Button btnTravelDictionary = (Button)findViewById(R.id.btnTravelDictionary);
+		btnTravelDictionary.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				// TODO 仮の遷移先を変更してください
+				Intent intent = new Intent(MainActivity.this, AddTravelWordActivity.class);
+				startActivity(intent);
+			}
+		});
 	}
 
 	@Override

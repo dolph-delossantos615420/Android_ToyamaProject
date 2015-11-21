@@ -15,6 +15,7 @@
     <string name="URL_UserRegist">http://mail.tym-bit.com/php_b/UserRegistration.php</string>
     <string name="URL_EmailUpdate">http://mail.tym-bit.com/php_b/UpdateEmail.php</string>
     <string name="URL_PasswordUpdate">http://mail.tym-bit.com/php_b/UpdatePassword.php</string>
+    <string name="URL_UPLOAD">http://mail.tym-bit.com/php_b/upload.php</string>
 
     <!-- Version -->
     <string name="action_version">バージョン情報</string>
@@ -24,6 +25,7 @@
     <string name="MenuBtn_Map">情報表示(地図)</string>
     <string name="MenuBtn_Ranking">各種ランキング</string>
     <string name="MenuBtn_Setting">設定</string>
+    <string name="MenuBtn_TravelDictionary">トラベル辞書</string>
 
     <!-- MapActivity -->
     <string name="title_activity_map_test">MapTestActivity</string>
@@ -73,4 +75,13 @@
     <string name="SettingPasswordLbl_NewPassword">新しいパスワード</string>
     <string name="SettingPasswordBtn_PasswordUpdate">更新</string>
 
+    <!-- AddTravelWordActivity -->
+    <string name="TravelWordAddLlb_Title">トラベル単語を登録します</string>
+    <string name="TravelWordAddLlb_Cutline">説明文</string>
+    <string name="TravelWordAddBtn_Gallery">ギャラリーから画像を選択する</string>
+    <string name="TravelWordAddBtn_Submit">登録</string>
+    <string-array name="TravelWordSpr_Category">
+        <item>お土産品</item>
+        <item>観光地</item>
+    </string-array>
 </resources>
