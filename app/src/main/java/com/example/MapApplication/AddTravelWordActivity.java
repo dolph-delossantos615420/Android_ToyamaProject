@@ -3,15 +3,19 @@ package com.example.MapApplication;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.app.Activity;
+import android.os.ParcelFileDescriptor;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 
 import org.apache.http.client.HttpClient;
@@ -26,6 +30,8 @@ import org.apache.http.impl.client.BasicResponseHandler;
 import org.apache.http.impl.client.DefaultHttpClient;
 
 import java.io.File;
+import java.io.FileDescriptor;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public class AddTravelWordActivity extends Activity {
@@ -45,13 +51,16 @@ public class AddTravelWordActivity extends Activity {
         mEditText = (EditText)findViewById(R.id.edtCutline);
     }
 
-    public void btnTravelWordAdd(View view) {
+    public void onClickTravelWordAdd(View view) {
+        System.out.println("==========  onClickTravelWordAdd  ==========");
+
         // サーバにアップロードする情報等
         String[] SubmitData = new String[3];
         SubmitData[0] = String.valueOf(mSpinner.getSelectedItemPosition() + 1);
         SubmitData[1] = mEditText.getText().toString();
         SubmitData[2] = path;
 
+        // TODO エディットテキストが空白の場合は処理を終了するように変更する
         // 未入力の項目が存在する場合は処理を終了する
         for(int i=1; i<3; i++){
             if(SubmitData[i] == "" || SubmitData[i] == null){
@@ -65,6 +74,8 @@ public class AddTravelWordActivity extends Activity {
     }
 
     public void onClickGallery(View view) {
+        System.out.println("==========  onClickGallery  ==========");
+
         // TODO 画像ファイルをギャラリーから選択する
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
@@ -72,6 +83,7 @@ public class AddTravelWordActivity extends Activity {
             intent.setType("image/*");
             startActivityForResult(intent, REQUEST_CODE);
         } else {
+            // TODO 動作の確認をしてください
             Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
             intent.setType("image/*");
             startActivityForResult(intent, REQUEST_CODE);
@@ -80,6 +92,7 @@ public class AddTravelWordActivity extends Activity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        System.out.println("==========  onActivityResult  ==========");
         super.onActivityResult(requestCode, resultCode, data);
 
         // ギャラリーで画像が選択されなかった場合は処理を終了する
@@ -88,7 +101,7 @@ public class AddTravelWordActivity extends Activity {
             return;
         }
 
-        // TODO 画像のパスを取得する
+        // 画像のパスを取得する
         String id = null;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             id = DocumentsContract.getDocumentId(data.getData());
@@ -101,18 +114,35 @@ public class AddTravelWordActivity extends Activity {
                     null);
             if (cursor.moveToFirst()) {
                 path = cursor.getString(0);
+                System.out.println(String.format("FilePath: %s", path));
             }
             cursor.close();
         } else {
+            // TODO 動作の確認をしてください
             String[] columns = {MediaStore.MediaColumns.DATA};
             Cursor cursor = getContentResolver().query(data.getData(), columns, null, null, null);
             if (cursor.moveToFirst()) {
                 path = cursor.getString(0);
+                System.out.println(String.format("FilePath: %s", path));
             }
             cursor.close();
         }
+
+        // 画像を描画する
+        try {
+            ParcelFileDescriptor rfd = getContentResolver().openFileDescriptor(data.getData(), "r");
+            FileDescriptor fd = rfd.getFileDescriptor();
+            Bitmap bitmap = BitmapFactory.decodeFileDescriptor(fd);
+            rfd.close();
+            ((ImageView)findViewById(R.id.imageView)).setImageBitmap(bitmap);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
+    // サーバに非同期通信を行うためのクラス
     class AppendTravelWordTask extends AsyncTask<String, String, String> {
         private Context context;
 
@@ -147,7 +177,7 @@ public class AddTravelWordActivity extends Activity {
             }
 
             HttpClient httpClient = new DefaultHttpClient();
-            HttpPost httpPost = new HttpPost(params[0]);
+            HttpPost httpPost = new HttpPost(context.getResources().getString(R.string.URL_UPLOAD));
             ResponseHandler<String> responseHandler = new BasicResponseHandler();
             MultipartEntity entity = new MultipartEntity((HttpMultipartMode.BROWSER_COMPATIBLE));
 

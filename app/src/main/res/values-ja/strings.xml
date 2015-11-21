@@ -17,6 +17,7 @@
     <string name="URL_PasswordUpdate">http://mail.tym-bit.com/php_b/UpdatePassword.php</string>
     <!--<string name="URL_TravelWordAdd">http://mail.tym-bit.com/php_b/AddTravel.php</string>-->
     <string name="URL_TravelWordAdd">http://172.16.42.5:8888/php_b/AddTravel.php</string>
+    <string name="URL_UPLOAD">http://172.16.42.5:8888/php_b/upload.php</string>
 
     <!-- Version -->
     <string name="action_version">バージョン情報</string>
@@ -79,6 +80,7 @@
     <!-- AddTravelWordActivity -->
     <string name="TravelWordAddLlb_Title">トラベル単語を登録します</string>
     <string name="TravelWordAddLlb_Cutline">説明文</string>
+    <string name="TravelWordAddBtn_Gallery">ギャラリーから画像を選択する</string>
     <string name="TravelWordAddBtn_Submit">登録</string>
     <string-array name="TravelWordSpr_Category">
         <item>お土産品</item>

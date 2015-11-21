@@ -17,6 +17,7 @@
     <string name="URL_PasswordUpdate">http://mail.tym-bit.com/php_b/UpdatePassword.php</string>
     <!--<string name="URL_TravelWordAdd">http://mail.tym-bit.com/php_b/AddTravel.php</string>-->
     <string name="URL_TravelWordAdd">http://172.16.42.5:8888/php_b/AddTravel.php</string>
+    <string name="URL_UPLOAD">http://172.16.42.5:8888/php_b/upload.php</string>
 
     <!-- Version -->
     <string name="action_version">About</string>
@@ -79,7 +80,8 @@
     <!-- AddTravelWordActivity -->
     <string name="TravelWordAddLlb_Title">Register the Travel Word.</string>
     <string name="TravelWordAddLlb_Cutline">Cutline</string>
-    <string name="TravelWordAddBtn_Submit">登録</string>
+    <string name="TravelWordAddBtn_Gallery">Gallery</string>
+    <string name="TravelWordAddBtn_Submit">Submit</string>
     <string-array name="TravelWordSpr_Category">
         <item>Gift</item>
         <item>Leisure venue</item>
