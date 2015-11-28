@@ -84,4 +84,9 @@
         <item>お土産品</item>
         <item>観光地</item>
     </string-array>
+
+    <!-- RankingActivity -->
+    <string name="SearchTag_RankingLike">RankingLike_ja</string>
+    <string name="SearchTag_RankingComment">RankingComment_ja</string>
+    <string name="SearchTag_RankingDate">RankingDate_ja</string>
 </resources>

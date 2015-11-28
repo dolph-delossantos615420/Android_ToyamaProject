@@ -85,6 +85,11 @@
         <item>Leisure venue</item>
     </string-array>
 
+    <!-- RankingActivity -->
+    <string name="SearchTag_RankingLike">RankingLike_en</string>
+    <string name="SearchTag_RankingComment">RankingComment_en</string>
+    <string name="SearchTag_RankingDate">RankingDate_en</string>
+
     <string name="title_activity_select_ranking">SelectRankingActivity</string>
     <string name="title_activity_user_information_update">UserInformationUpdateActivity</string>
     <string name="title_activity_user_email_update">UserEmailUpdateActivity</string>
