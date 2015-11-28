@@ -1,12 +1,14 @@
 package com.example.MapApplication;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
-public class SelectRankingActivity extends ActionBarActivity {
+public class SelectRankingActivity extends ActionBarActivity implements View.OnClickListener {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -27,5 +29,31 @@ public class SelectRankingActivity extends ActionBarActivity {
 		// automatically handle clicks on the Home/Up button, so long
 		// as you specify a parent activity in AndroidManifest.xml.
 		return super.onOptionsItemSelected(item);
+	}
+
+	@Override
+	public void onClick(View v) {
+		// TODO 遷移先を変更する
+		Intent intent = new Intent(SelectRankingActivity.this, SelectRankingActivity.class);
+
+		int id = v.getId();
+		switch (id) {
+			case R.id.btnLikeRanking:
+				System.out.println("=====  Ranking Like  =====");
+				intent.putExtra("SearchTag", getString(R.string.SearchTag_RankingLike));
+				startActivity(intent);
+				break;
+			case R.id.btnCommentRanking:
+				System.out.println("=====  Ranking Comment  =====");
+				intent.putExtra("SearchTag", getString(R.string.SearchTag_RankingComment));
+				startActivity(intent);
+				break;
+			case R.id.btnCreatetimeRanking:
+				System.out.println("=====  Ranking Date  =====");
+				intent.putExtra("SearchTag", getString(R.string.SearchTag_RankingDate));
+				startActivity(intent);
+				break;
+		}
+
 	}
 }

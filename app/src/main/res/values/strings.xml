@@ -95,4 +95,7 @@
     <string name="title_activity_user_email_update">UserEmailUpdateActivity</string>
     <string name="title_activity_user_password_update">UserPasswordUpdateActivity</string>
     <string name="title_activity_add_travel_word">AddTravelWordActivity</string>
+    <string name="title_activity_ranking">RankingActivity</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_main2">Main2Activity</string>
 </resources>
