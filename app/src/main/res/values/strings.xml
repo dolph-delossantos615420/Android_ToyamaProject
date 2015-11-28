@@ -15,7 +15,11 @@
     <string name="URL_UserRegist">http://mail.tym-bit.com/php_b/UserRegistration.php</string>
     <string name="URL_EmailUpdate">http://mail.tym-bit.com/php_b/UpdateEmail.php</string>
     <string name="URL_PasswordUpdate">http://mail.tym-bit.com/php_b/UpdatePassword.php</string>
-    <string name="URL_UPLOAD">http://mail.tym-bit.com/php_b/upload.php</string>
+    <!--<string name="URL_AddTravelWord">http://mail.tym-bit.com/php_b/wpjn_AddTravelWord.php</string>-->
+    <!--<string name="URL_SearchRanking">http://mail.tym-bit.com/php_b/wpjn_SearchRanking.php</string>-->
+    <!-- TODO トラベル単語の登録とランキングの取得のURLはファイル名を変更しているのでデータベースに接続する際にはチェックが必要です -->
+    <string name="URL_AddTravelWord">http://172.16.42.5:8888/php_b/upload.php</string>
+    <string name="URL_SearchRanking">http://172.16.42.5:8888/php_b/Ranking.php</string>
 
     <!-- Version -->
     <string name="action_version">About</string>
@@ -89,6 +93,7 @@
     <string name="SearchTag_RankingLike">RankingLike_en</string>
     <string name="SearchTag_RankingComment">RankingComment_en</string>
     <string name="SearchTag_RankingDate">RankingDate_en</string>
+    <string name="RankingTitle">Ranking Top 9</string>
 
     <string name="title_activity_select_ranking">SelectRankingActivity</string>
     <string name="title_activity_user_information_update">UserInformationUpdateActivity</string>

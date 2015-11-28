@@ -192,7 +192,7 @@ public class AddTravelWordActivity extends AppCompatActivity {
             }
 
             HttpClient httpClient = new DefaultHttpClient();
-            HttpPost httpPost = new HttpPost(context.getResources().getString(R.string.URL_UPLOAD));
+            HttpPost httpPost = new HttpPost(context.getResources().getString(R.string.URL_AddTravelWord));
             ResponseHandler<String> responseHandler = new BasicResponseHandler();
             MultipartEntity entity = new MultipartEntity((HttpMultipartMode.BROWSER_COMPATIBLE));
 

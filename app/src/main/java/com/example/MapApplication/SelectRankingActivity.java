@@ -14,6 +14,10 @@ public class SelectRankingActivity extends ActionBarActivity implements View.OnC
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_select_ranking);
+
+		findViewById(R.id.btnLikeRanking).setOnClickListener(this);
+		findViewById(R.id.btnCommentRanking).setOnClickListener(this);
+		findViewById(R.id.btnCreatetimeRanking).setOnClickListener(this);
 	}
 
 	@Override
@@ -34,23 +38,26 @@ public class SelectRankingActivity extends ActionBarActivity implements View.OnC
 	@Override
 	public void onClick(View v) {
 		// TODO 遷移先を変更する
-		Intent intent = new Intent(SelectRankingActivity.this, SelectRankingActivity.class);
+		Intent intent = new Intent(SelectRankingActivity.this, RankingActivity.class);
 
 		int id = v.getId();
 		switch (id) {
 			case R.id.btnLikeRanking:
 				System.out.println("=====  Ranking Like  =====");
 				intent.putExtra("SearchTag", getString(R.string.SearchTag_RankingLike));
+				intent.putExtra("ButtonTag", id);
 				startActivity(intent);
 				break;
 			case R.id.btnCommentRanking:
 				System.out.println("=====  Ranking Comment  =====");
 				intent.putExtra("SearchTag", getString(R.string.SearchTag_RankingComment));
+				intent.putExtra("ButtonTag", id);
 				startActivity(intent);
 				break;
 			case R.id.btnCreatetimeRanking:
 				System.out.println("=====  Ranking Date  =====");
 				intent.putExtra("SearchTag", getString(R.string.SearchTag_RankingDate));
+				intent.putExtra("ButtonTag", id);
 				startActivity(intent);
 				break;
 		}
