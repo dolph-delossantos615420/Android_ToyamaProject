@@ -7,6 +7,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLEncoder;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -53,13 +54,13 @@ public class AddPlaceTask extends AsyncTask<PlaceInfo, Integer, JSONObject> {
 
 			// データ作成
 			String postData = "";
-			postData += "placename=" + contents[0].mPlacename;
-			postData += "&" + "placename_en=" + contents[0].mPlacename_en;
+			postData += "placename=" + URLEncoder.encode(contents[0].mPlacename, "UTF-8");
+			postData += "&" + "placename_en=" + URLEncoder.encode(contents[0].mPlacename_en, "UTF-8");
 			postData += "&" + "latitude=" + contents[0].mLatitude;
 			postData += "&" + "longitude=" + contents[0].mLongitude;
 			postData += "&" + "address=" + contents[0].mAddress;
 			postData += "&" + "phonenumber=" + contents[0].mPhonenumber;
-			postData += "&" + "remark=" + contents[0].mRemark;
+			postData += "&" + "remark=" + URLEncoder.encode(contents[0].mRemark, "UTF-8");
 			postData += "&" + "projectcode=" + contents[0].mProjectCode;
 
 			// データを送信する

@@ -7,6 +7,8 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -55,8 +57,8 @@ public class AddCommentTask extends AsyncTask<String, Integer, JSONObject> {
 			String postData = "";
 			postData += "placeid=" + contents[0];
 			postData += "&" + "userid=" + contents[1];
-			postData += "&" + "createtime=" + contents[2];
-			postData += "&" + "comment=" + contents[3];
+			postData += "&" + "createtime=" + URLEncoder.encode(contents[2], "UTF-8");
+			postData += "&" + "comment=" + URLEncoder.encode(contents[3], "UTF-8");
 
 			// データを送信する
 			os = new DataOutputStream(connection.getOutputStream());
