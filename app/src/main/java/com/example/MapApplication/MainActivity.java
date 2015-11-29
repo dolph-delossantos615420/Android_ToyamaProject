@@ -113,4 +113,9 @@ public class MainActivity extends AppCompatActivity
 		diag.show(getSupportFragmentManager(), "Version");
 	}
 
+	public void onClickBtnRating(View v) {
+		Intent intent = new Intent(this, RatingActivity.class);
+		startActivity(intent);
+	}
+
 }

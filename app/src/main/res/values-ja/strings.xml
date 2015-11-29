@@ -12,14 +12,16 @@
     <string name="URL_SearchComment">http://mail.tym-bit.com/php_b/SearchComment.php</string>
     <string name="URL_AddPlace">http://mail.tym-bit.com/php_b/AddPlace.php</string>
     <string name="URL_AddComment">http://mail.tym-bit.com/php_b/AddComment.php</string>
-    <string name="URL_UserRegist">http://mail.tym-bit.com/php_b/UserRegistration.php</string>
+    <!--<string name="URL_UserRegist">http://mail.tym-bit.com/php_b/UserRegistration.php</string>-->
     <string name="URL_EmailUpdate">http://mail.tym-bit.com/php_b/UpdateEmail.php</string>
     <string name="URL_PasswordUpdate">http://mail.tym-bit.com/php_b/UpdatePassword.php</string>
     <!--<string name="URL_AddTravelWord">http://mail.tym-bit.com/php_b/wpjn_AddTravelWord.php</string>-->
     <!--<string name="URL_SearchRanking">http://mail.tym-bit.com/php_b/wpjn_SearchRanking.php</string>-->
     <!-- TODO トラベル単語の登録とランキングの取得のURLはファイル名を変更しているのでデータベースに接続する際にはチェックが必要です -->
+    <string name="URL_UserRegist">http://172.16.42.5:8888/php_b/UserRegistration.php</string>
     <string name="URL_AddTravelWord">http://172.16.42.5:8888/php_b/upload.php</string>
     <string name="URL_SearchRanking">http://172.16.42.5:8888/php_b/Ranking.php</string>
+    <string name="URL_AddRating">http://172.16.42.5:8888/php_b/wpjn_AddRating.php</string>
 
     <!-- Version -->
     <string name="action_version">バージョン情報</string>
@@ -30,6 +32,7 @@
     <string name="MenuBtn_Ranking">各種ランキング</string>
     <string name="MenuBtn_Setting">設定</string>
     <string name="MenuBtn_TravelDictionary">トラベル辞書</string>
+    <string name="MenuBtn_Rating">アプリ評価</string>
 
     <!-- MapActivity -->
     <string name="title_activity_map_test">MapTestActivity</string>
