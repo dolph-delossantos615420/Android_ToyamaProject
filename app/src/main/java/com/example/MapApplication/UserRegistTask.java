@@ -13,6 +13,7 @@ import org.json.JSONObject;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 
 public class UserRegistTask extends AsyncTask<String, Integer, JSONObject> {
@@ -113,6 +114,22 @@ public class UserRegistTask extends AsyncTask<String, Integer, JSONObject> {
 	}
 
 	protected void onPostExecute(JSONObject jsonObject) {
+		try {
+			int userid = jsonObject.getInt("userid");
+			if(0 <= userid) {
+				// プレファレンスに書き込むための準備をする
+				String filename = "userinfo";
+				SharedPreferences preferences = mContext.getSharedPreferences(filename, Context.MODE_PRIVATE);
+				SharedPreferences.Editor editor = preferences.edit();
+
+				// プレファレンスにデータを書き込む
+				editor.putInt("UserID", userid);
+				editor.commit();
+			}
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+
 		mDialog.dismiss();
 		//TODO:string.xml化
 		//Toast toast = Toast.makeText(mContext, "ユーザ登録が完了しました", Toast.LENGTH_LONG);

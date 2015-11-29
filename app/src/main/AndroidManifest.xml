@@ -88,6 +88,11 @@
             android:label="@string/title_activity_main2"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
+        <activity
+            android:name=".RatingActivity"
+            android:label="@string/title_activity_rating"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
     </application>
 
 </manifest>
