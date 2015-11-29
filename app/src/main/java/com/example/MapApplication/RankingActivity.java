@@ -60,6 +60,7 @@ public class RankingActivity extends AppCompatActivity {
         String[] strings = new String[2];
         strings[0] = getResources().getString(R.string.URL_SearchRanking);
         System.out.println( strings[0] );
+
         switch (id) {
             case R.id.btnLikeRanking:
                 strings[1] = getString(R.string.SearchTag_RankingLike);
@@ -81,7 +82,6 @@ public class RankingActivity extends AppCompatActivity {
                 break;
         }
     }
-
 
     class RankingTask extends AsyncTask<String, String, JSONObject> {
         private Context context;
@@ -214,7 +214,7 @@ public class RankingActivity extends AppCompatActivity {
             ImageView imageView;
             TextView countTextView;
             TextView nameTextView;
-            TextView commentTextView;
+            TextView addressTextView;
         }
 
         // 表示するリストアイテム単体のクラス
@@ -257,7 +257,7 @@ public class RankingActivity extends AppCompatActivity {
                     holder.imageView = (ImageView) convertView.findViewById(R.id.rank_img);
                     holder.countTextView = (TextView) convertView.findViewById(R.id.rank_count);
                     holder.nameTextView = (TextView) convertView.findViewById(R.id.rank_name);
-                    holder.commentTextView = (TextView) convertView.findViewById(R.id.rank_address);
+                    holder.addressTextView = (TextView) convertView.findViewById(R.id.rank_address);
                     // ViewHolderを使いまわせるようにセットしておく
                     convertView.setTag(holder);
                 } else {
@@ -267,7 +267,7 @@ public class RankingActivity extends AppCompatActivity {
                 holder.imageView.setImageResource(item.rank);
                 holder.countTextView.setText(item.count);
                 holder.nameTextView.setText(item.placename);
-                holder.commentTextView.setText(item.address);
+                holder.addressTextView.setText(item.address);
                 // 表示するViewを返す
                 return convertView;
             }
