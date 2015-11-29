@@ -25,6 +25,18 @@
                         android:id="@+id/rank_img"
                         android:src="@drawable/ic_launcher"/>
                 </TableRow>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="CountORDate"
+                        style="@style/RankingListItemFontCount"
+                        android:id="@+id/rank_count"/>
+                </TableRow>
             </TableLayout>
 
             <TableLayout
@@ -54,9 +66,9 @@
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:text="備考"
-                        android:lines="2"
-                        style="@style/RankingListItemFontRemark"
-                        android:id="@+id/rank_remark"/>
+                        android:lines="1"
+                        style="@style/RankingListItemFontAddress"
+                        android:id="@+id/rank_address"/>
                 </TableRow>
             </TableLayout>
         </TableRow>

@@ -55,7 +55,6 @@ public class RankingActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
-//        String flag = bundle.getString("SearchTag");
         int id = bundle.getInt("ButtonTag");
 
         String[] strings = new String[2];
@@ -123,7 +122,8 @@ public class RankingActivity extends AppCompatActivity {
                     List<ListItem> items = new ArrayList<ListItem>();
                     for(int i=0,l=jsonArray.length(); i<l; i++){
                         JSONArray jsona = jsonArray.getJSONArray(i);
-                        items.add( new ListItem(R.drawable.ic_launcher, jsona.get(0).toString(), jsona.get(1).toString()) );
+                        // TODO 第一引数にはランキングの順位の画像を指定する
+                        items.add( new ListItem(R.drawable.ic_launcher, jsona.get(0).toString(), jsona.get(1).toString(), jsona.get(2).toString()) );
                     }
 
                     // 自前のアダプターを作って
@@ -159,7 +159,7 @@ public class RankingActivity extends AppCompatActivity {
                 connection.setDoOutput(true);
                 connection.setRequestMethod("POST");
 
-                // TODO データ作成
+                // データ作成
                 String postData = "SearchTag=" + params[1];
 
                 // データを送信する
@@ -200,10 +200,7 @@ public class RankingActivity extends AppCompatActivity {
                 // 開いたら閉じる
                 try {
                     if (br != null) br.close();
-                    if (os != null) {
-                        os.flush();
-                        os.close();
-                    }
+                    if (os != null) { os.flush(); os.close(); }
                     if (connection != null) connection.disconnect();
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -214,20 +211,23 @@ public class RankingActivity extends AppCompatActivity {
 
 
         class ViewHolder {
-            ImageView imageView; // アイコン画像の表示用
-            TextView nameTextView; // ユーザ名の表示用
-            TextView commentTextView; // コメントの表示用
+            ImageView imageView;
+            TextView countTextView;
+            TextView nameTextView;
+            TextView commentTextView;
         }
 
         // 表示するリストアイテム単体のクラス
         class ListItem {
             int rank;
+            String count;
             String placename;
-            String remark;
-            public ListItem(int rank, String placename, String remark) {
+            String address;
+            public ListItem(int rank, String count, String placename, String address) {
                 this.rank = rank;
+                this.count = count;
                 this.placename = placename;
-                this.remark = remark;
+                this.address = address;
             }
         }
 
@@ -255,20 +255,19 @@ public class RankingActivity extends AppCompatActivity {
                     holder = new ViewHolder();
                     // 参照をセット
                     holder.imageView = (ImageView) convertView.findViewById(R.id.rank_img);
+                    holder.countTextView = (TextView) convertView.findViewById(R.id.rank_count);
                     holder.nameTextView = (TextView) convertView.findViewById(R.id.rank_name);
-                    holder.commentTextView = (TextView) convertView.findViewById(R.id.rank_remark);
+                    holder.commentTextView = (TextView) convertView.findViewById(R.id.rank_address);
                     // ViewHolderを使いまわせるようにセットしておく
                     convertView.setTag(holder);
                 } else {
                     // ある場合はViewHolderを取り出して再利用
                     holder = (ViewHolder) convertView.getTag();
                 }
-                // アイコン画像をセット
                 holder.imageView.setImageResource(item.rank);
-                // ユーザ名をセット
+                holder.countTextView.setText(item.count);
                 holder.nameTextView.setText(item.placename);
-                // コメントをセット
-                holder.commentTextView.setText(item.remark);
+                holder.commentTextView.setText(item.address);
                 // 表示するViewを返す
                 return convertView;
             }
