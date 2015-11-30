@@ -2,7 +2,7 @@ package com.example.MapApplication;
 
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.SharedPreferences;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -10,8 +10,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.RatingBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONException;
@@ -24,17 +23,15 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.net.URLEncoder;
 
-public class RatingActivity extends AppCompatActivity {
+public class RatingMenuActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private RatingTask mRatingTask;
-    private String[] ratings;
+    private RatingAverageTask mRatingAverageTask;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_rating);
+        setContentView(R.layout.activity_rating_menu);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -47,51 +44,36 @@ public class RatingActivity extends AppCompatActivity {
             }
         });
 
-        String filename = "userinfo";
-        SharedPreferences preferences = getSharedPreferences(filename, Context.MODE_PRIVATE);
-        boolean ratingflag = preferences.getBoolean("Rating", false);
-        if(ratingflag){
-            ((RatingBar)(findViewById(R.id.RatingBar1))).setRating(Float.valueOf(preferences.getString("Rating0","1")));
-            ((RatingBar)(findViewById(R.id.RatingBar2))).setRating(Float.valueOf(preferences.getString("Rating1","1")));
-            ((RatingBar)(findViewById(R.id.RatingBar3))).setRating(Float.valueOf(preferences.getString("Rating2","1")));
-            ((RatingBar)(findViewById(R.id.RatingBar4))).setRating(Float.valueOf(preferences.getString("Rating3","1")));
-            ((RatingBar)(findViewById(R.id.RatingBar5))).setRating(Float.valueOf(preferences.getString("Rating4","1")));
-            ((EditText)(findViewById(R.id.RatingComment))).setText(preferences.getString("Rating5","hogehoge"));
-        }
+        findViewById(R.id.btnRatingDo).setOnClickListener(this);
+        findViewById(R.id.btnRatingWatch).setOnClickListener(this);
 
-        ratings = new String[6];
-
-        findViewById(R.id.RatingSubmitButton).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // サーバに送信するデータの一部
-                ratings[0] = String.valueOf((int)((RatingBar)findViewById(R.id.RatingBar1)).getRating());
-                ratings[1] = String.valueOf((int)((RatingBar)findViewById(R.id.RatingBar2)).getRating());
-                ratings[2] = String.valueOf((int)((RatingBar)findViewById(R.id.RatingBar3)).getRating());
-                ratings[3] = String.valueOf((int)((RatingBar)findViewById(R.id.RatingBar4)).getRating());
-                ratings[4] = String.valueOf((int)((RatingBar)findViewById(R.id.RatingBar5)).getRating());
-                ratings[5] = ((EditText)(findViewById(R.id.RatingComment))).getText().toString();
-                for(int i=0,l=ratings.length; i<l; i++){
-                    System.out.println(String.format("RatingData%d: %s", i, ratings[i]));
-                }
-
-                String[] strings = new String[1];
-                strings[0] = getString(R.string.URL_AddRating);
-                for(int i=0,l=strings.length; i<l; i++){
-                    System.out.println(String.format("TaskData%d: %s", i, strings[i]));
-                }
-
-                mRatingTask = new RatingTask(RatingActivity.this);
-                mRatingTask.execute(strings);
-            }
-        });
+        String[] strings = new String[1];
+        strings[0] = getString(R.string.URL_SearchRatingAverage);
+        mRatingAverageTask = new RatingAverageTask(this);
+        mRatingAverageTask.execute(strings);
     }
 
-    class RatingTask extends AsyncTask<String, String, JSONObject> {
+    @Override
+    public void onClick(View v) {
+        Intent intent = null;
+        int id = v.getId();
+        switch (id) {
+            case R.id.btnRatingDo: System.out.println("::: Rating Do Submit :::");
+                intent = new Intent(RatingMenuActivity.this, RatingActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.btnRatingWatch: System.out.println("::: Rating Watch Submit :::");
+                intent = new Intent(RatingMenuActivity.this, RatingWatchActivity.class);
+                startActivity(intent);
+                break;
+        }
+    }
+
+    class RatingAverageTask extends AsyncTask<String, String, JSONObject> {
         private Context context;
         private ProgressDialog dialog;
 
-        public RatingTask(Context context) {
+        public RatingAverageTask(Context context) {
             this.context = context;
         }
 
@@ -113,19 +95,11 @@ public class RatingActivity extends AppCompatActivity {
             try {
                 Boolean f = jsonObject.getBoolean("flag");
                 if(f){
-                    // ユーザ評価済みのフラグを設定する
-                    String filename = "userinfo";
-                    SharedPreferences preferences = context.getSharedPreferences(filename, Context.MODE_PRIVATE);
-                    SharedPreferences.Editor editor = preferences.edit();
-                    editor.putBoolean("Rating", true);
-                    for(int i=0,l=ratings.length; i<l; i++){
-                        editor.putString(String.format("Rating%d",i), ratings[i]);
-                    }
-                    editor.commit();
+                    float point = Float.valueOf(jsonObject.getString("data"));
+                    ((TextView) (findViewById(R.id.RatingPointView))).setText(String.format("%.1f", point));
 
-                    Toast.makeText(context, "アプリの評価が完了しました", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "アプリの総合評価の表示が完了しました", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(context, "JSON ERROR", Toast.LENGTH_SHORT).show();
                     System.out.println(":::::  JSON error  :::::");
                 }
             } catch (JSONException e) {
@@ -141,11 +115,6 @@ public class RatingActivity extends AppCompatActivity {
                 System.out.println(String.format("DATA %d: %s", i, params[i]));
             }
 
-            String filename = "userinfo";
-            SharedPreferences preferences = context.getSharedPreferences(filename, Context.MODE_PRIVATE);
-            String userid = String.valueOf(preferences.getInt("UserID", -1));
-            System.out.println(userid);
-
             HttpURLConnection connection = null;
             DataOutputStream os = null;
             BufferedReader br = null;
@@ -159,13 +128,6 @@ public class RatingActivity extends AppCompatActivity {
 
                 // TODO データ作成
                 String postData = "";
-                postData += "UserID=" + URLEncoder.encode(userid, "UTF-8");
-                postData += "&" + "RatingMap=" + URLEncoder.encode(ratings[0], "UTF-8");
-                postData += "&" + "RatingRLike=" + URLEncoder.encode(ratings[1], "UTF-8");
-                postData += "&" + "RatingRComment=" + URLEncoder.encode(ratings[2], "UTF-8");
-                postData += "&" + "RatingRDate=" + URLEncoder.encode(ratings[3], "UTF-8");
-                postData += "&" + "RatingTravel=" + URLEncoder.encode(ratings[4], "UTF-8");
-                postData += "&" + "RatingComment=" + URLEncoder.encode(ratings[5], "UTF-8");
 
                 // データを送信する
                 os = new DataOutputStream(connection.getOutputStream());

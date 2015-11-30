@@ -114,7 +114,7 @@ public class MainActivity extends AppCompatActivity
 	}
 
 	public void onClickBtnRating(View v) {
-		Intent intent = new Intent(this, RatingActivity.class);
+		Intent intent = new Intent(this, RatingMenuActivity.class);
 		startActivity(intent);
 	}
 

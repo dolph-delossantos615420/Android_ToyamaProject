@@ -7,7 +7,7 @@
     <!-- Project Code -->
     <string name="ProjectCode">JPN00</string>
 
-    <!-- Server URLs --><!--★★mail.tym-bit.com-->
+    <!--  SCHOOL URL  -->
     <!--<string name="URL_SearchPlace">http://mail.tym-bit.com/php_b/SearchPlace.php</string>-->
     <!--<string name="URL_SearchComment">http://mail.tym-bit.com/php_b/SearchComment.php</string>-->
     <!--<string name="URL_AddPlace">http://mail.tym-bit.com/php_b/AddPlace.php</string>-->
@@ -17,7 +17,8 @@
     <!--<string name="URL_PasswordUpdate">http://mail.tym-bit.com/php_b/UpdatePassword.php</string>-->
     <!--<string name="URL_AddTravelWord">http://mail.tym-bit.com/php_b/wpjn_AddTravelWord.php</string>-->
     <!--<string name="URL_SearchRanking">http://mail.tym-bit.com/php_b/wpjn_SearchRanking.php</string>-->
-    <!-- TODO トラベル単語の登録とランキングの取得のURLはファイル名を変更しているのでデータベースに接続する際にはチェックが必要です -->
+
+    <!--  HOME URL  -->
     <string name="URL_SearchRanking">http://172.16.42.5:8888/php_b/wpjn_SearchRanking.php</string>
     <string name="URL_UserRegist">http://172.16.42.5:8888/php_b/UserRegistration.php</string>
     <string name="URL_AddTravelWord">http://172.16.42.5:8888/php_b/wpjn_AddTravelWord.php</string>
@@ -28,6 +29,9 @@
     <string name="URL_AddComment">http://172.16.42.5:8888/php_b/AddComment.php</string>
     <string name="URL_EmailUpdate">http://172.16.42.5:8888/php_b/UpdateEmail.php</string>
     <string name="URL_PasswordUpdate">http://172.16.42.5:8888/php_b/UpdatePassword.php</string>
+
+    <string name="URL_SearchRatingWatch">http://172.16.42.5:8888/php_b/wpjn_SearchRatingWatch.php</string>
+    <string name="URL_SearchRatingAverage">http://172.16.42.5:8888/php_b/wpjn_SearchRatingAverage.php</string>
 
     <!-- Version -->
     <string name="action_version">About</string>
@@ -112,4 +116,6 @@
     <string name="title_activity_ranking">RankingActivity</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_rating">RatingActivity</string>
+    <string name="title_activity_rating_menu">RatingMenuActivity</string>
+    <string name="title_activity_rating_watch">RatingWatchActivity</string>
 </resources>
